@@ -1,0 +1,60 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Odd Socks Records Promo</title>
+
+  <link rel="stylesheet" href="/vendor/css/sc-player-minimal.css" type="text/css">
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+  <div class="logo">
+    <img src="/<%= @banner %>">
+  </div>
+
+  <div class="stream">
+    <% @release['tracks'].each do |soundcloud_track_url| %>
+      <a href="<%= soundcloud_track_url %>" class="sc-player"><%= soundcloud_track_url %></a>
+    <% end %>
+  </div>
+
+  <div class="feedback">
+    <div class="container">
+      <form class="form" id="commentForm" method="post" action="/download">
+        <p class="name">
+          <label class="label" for="name">Name</label>
+          <input id="name" name="name" size="32" class="required" minlength="2" />
+        </p>
+
+        <p class="email">
+          <label class="label" for="email">Email</label>
+          <input id="email" name="email" size="32"  class="required email" />
+        </p>
+
+        <p class="description">
+          <label for="description">How do you like the release?</label>
+        </p>
+        <textarea id="description" name="description" rows="7" class="required" minlength="8"></textarea>
+
+         <p>
+           <input class="submit" type="submit" value="Send feedback and DOWNLOAD release" />
+           <input type="hidden" name="release" value="<%= @permalink %>" />
+         </p>
+      </form>
+      <div class="success hidden">
+        <h2>Thanks for the feedback.</h2>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+  <script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
+  <script type="text/javascript" src="/vendor/js/soundcloud.player.api.js"></script>
+  <script type="text/javascript" src="/vendor/js/sc-player.js"></script>
+
+  <script type="text/javascript" src="/script.js"></script>
+</body>
+</html>
